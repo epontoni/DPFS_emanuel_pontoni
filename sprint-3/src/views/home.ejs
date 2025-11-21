@@ -1,0 +1,75 @@
+<%- include('partials/header', { title: 'MakerHub - Home' }) %>
+
+<main class="page shop-page">
+  <aside class="filters">
+    <h2>Categories</h2>
+    <ul>
+      <li><a href="#">3D Printing</a></li>
+      <li><a href="#">Arduino</a></li>
+      <li><a href="#">Micro:bit</a></li>
+      <li><a href="#">Robotics</a></li>
+    </ul>
+    <div class="filter-block">
+      <h3>Shopping Option</h3>
+      <label for="min-price">Min</label>
+      <input id="min-price" type="number" placeholder="$0.00" />
+      <label for="max-price">Max</label>
+      <input id="max-price" type="number" placeholder="$0.00" />
+    </div>
+  </aside>
+
+  <section class="products page">
+    <div class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">View Grid</p>
+        <h1>Innovate with MakerHub</h1>
+        <p>Build your next big idea with cutting-edge maker essentials.</p>
+      </div>
+      <div class="hero-cta">
+        <button class="primary">Call to Action</button>
+        <p class="amount">$0.0.0</p>
+      </div>
+    </div>
+
+    <div class="product-grid">
+      <% products.forEach(function(p){ %>
+      <article class="product-card">
+        <div class="product-thumb">
+          <% if (p.image) { %>
+          <img
+            src="<%= p.image %>"
+            alt="<%= p.title %>"
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 8px;
+            "
+          />
+          <% } %>
+        </div>
+        <h3><%= p.title %></h3>
+        <p class="price">$<%= p.price %></p>
+        <div
+          style="
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-top: 0.5rem;
+          "
+        >
+          <a href="/products/<%= p.id %>" class="primary">View</a>
+          <a
+            href="/products/<%= p.id %>/edit"
+            class="link"
+            style="margin-left: 8px"
+            >Edit</a
+          >
+        </div>
+      </article>
+      <% }) %>
+    </div>
+  </section>
+</main>
+
+<%- include('partials/footer') %>

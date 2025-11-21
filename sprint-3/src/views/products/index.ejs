@@ -1,0 +1,46 @@
+<%- include('../partials/header', { title: 'Products' }) %>
+
+<main class="container main-content">
+  <h1 class="page-title">Products</h1>
+
+  <div style="margin: 1rem 0">
+    <a href="/products/create" class="btn btn-primary">Create Product</a>
+  </div>
+
+  <div class="grid-cards">
+    <% products.forEach(function(p){ %>
+    <div class="product-card">
+      <img
+        class="product-thumb"
+        src="https://via.placeholder.com/480x280?text=<%= encodeURIComponent(p.title) %>"
+        alt="<%= p.title %>"
+      />
+      <div class="card-body">
+        <h3><a href="/products/<%= p.id %>"><%= p.title %></a></h3>
+        <p class="muted"><%= p.description %></p>
+        <div
+          style="
+            margin-top: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <strong>$<%= p.price %></strong>
+          <div>
+            <a class="btn btn-ghost" href="/products/<%= p.id %>">View</a>
+            <a
+              class="btn btn-ghost"
+              href="/products/<%= p.id %>/edit"
+              style="margin-left: 8px"
+              >Edit</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,33 @@
+<%- include('../partials/header', { title: 'Login' }) %>
+
+<main class="page">
+  <div class="container">
+    <h1>Iniciar sesión</h1>
+    <% if (typeof error !== 'undefined') { %>
+    <p style="color: red"><%= error %></p>
+    <% } %>
+    <form action="/login" method="POST">
+      <div class="form-row">
+        <label class="form-label">Email</label>
+        <input name="email" type="email" class="input" required />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Contraseña</label>
+        <input name="password" type="password" class="input" required />
+      </div>
+      <div class="form-row">
+        <label class="checkbox"
+          ><input name="remember" type="checkbox" /> Recordarme</label
+        >
+      </div>
+      <div style="margin-top: 1rem">
+        <button class="btn btn-primary" type="submit">Entrar</button>
+      </div>
+      <div style="margin-top: 0.5rem">
+        <a href="/register">Crear cuenta</a>
+      </div>
+    </form>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

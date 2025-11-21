@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= title || 'MakerHub' %></title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner container">
+        <a href="/" class="brand" style="text-decoration: none; color: inherit">
+          <svg
+            fill="none"
+            height="40"
+            viewBox="0 0 48 48"
+            width="40"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M41.0625 24C41.0625 33.4264 33.4264 41.0625 24 41.0625C14.5736 41.0625 6.9375 33.4264 6.9375 24C6.9375 14.5736 14.5736 6.9375 24 6.9375C33.4264 6.9375 41.0625 14.5736 41.0625 24Z"
+              stroke="#0A84FF"
+              stroke-miterlimit="10"
+              stroke-width="4"
+            ></path>
+          </svg>
+          <div>
+            <div class="title">MAKERHUB</div>
+            <div class="subtitle">BUILD • INNOVATE • CREATE</div>
+          </div>
+        </a>
+
+        <nav class="main-nav">
+          <a href="/products">Products</a>
+          <a href="#">Kits</a>
+          <a href="#">Community</a>
+          <a href="#">Support</a>
+        </nav>
+
+        <div class="header-actions">
+          <% if (user) { %>
+          <a
+            href="/users/profile"
+            class="user-link"
+            style="display: flex; align-items: center; gap: 8px"
+          >
+            <% if (user.image) { %>
+            <img
+              src="<%= user.image %>"
+              alt="avatar"
+              style="
+                width: 32px;
+                height: 32px;
+                border-radius: 6px;
+                object-fit: cover;
+              "
+            />
+            <% } else { %>
+            <span class="material-icons">person</span>
+            <% } %>
+            <span><%= user.firstName %></span>
+          </a>
+          <a href="/logout" class="icon-btn" title="Cerrar sesión">
+            <span class="material-icons">logout</span></a
+          >
+          <% } else { %>
+          <a href="/login" class="icon-btn"
+            ><span class="material-icons">person_outline</span></a
+          >
+          <% } %>
+          <a href="/shopping-cart" class="icon-btn"
+            ><span class="material-icons">shopping_bag</span></a
+          >
+        </div>
+      </div>
+    </header>
+  </body>
+</html>

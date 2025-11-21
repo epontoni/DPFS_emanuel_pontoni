@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "email": "admin@makerhub.com",
+    "name": "Admin User",
+    "password": "hashed_password_here",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "email": "user@makerhub.com",
+    "name": "Regular User",
+    "password": "hashed_password_here",
+    "role": "user"
+  },
+  {
+    "id": 3,
+    "firstName": "Emanuel",
+    "lastName": "Pontoni",
+    "email": "pontoni.emanuel@gmail.com",
+    "password": "$2b$10$fTpsAvif9tO.Rgl0fUae9uALogc.NaQP9gFst.613W4DKYGUGjlZ6",
+    "category": "admin",
+    "image": "/public/images/users/1763751241587-313239252-home.png",
+    "createdAt": "2025-11-21T18:54:01.657Z"
+  }
+]

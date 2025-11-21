@@ -1,0 +1,41 @@
+<%- include('../partials/header', { title: 'Register' }) %>
+
+<main class="page">
+  <div class="container">
+    <h1>Registro</h1>
+    <% if (typeof error !== 'undefined') { %>
+    <p style="color: red"><%= error %></p>
+    <% } %>
+    <form action="/register" method="POST" enctype="multipart/form-data">
+      <div class="form-row">
+        <label class="form-label">Nombre</label>
+        <input name="firstName" class="input" required />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Apellido</label>
+        <input name="lastName" class="input" required />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Email</label>
+        <input name="email" type="email" class="input" required />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Contraseña</label>
+        <input name="password" type="password" class="input" required />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Categoría</label>
+        <input name="category" class="input" required />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Imagen (opcional)</label>
+        <input name="image" type="file" accept="image/*" />
+      </div>
+      <div style="margin-top: 1rem">
+        <button class="btn btn-primary" type="submit">Registrarme</button>
+      </div>
+    </form>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

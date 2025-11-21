@@ -1,0 +1,18 @@
+{
+  "name": "makerhub-sprint-3",
+  "version": "1.0.0",
+  "description": "MakerHub - Sprint 3 minimal Express + EJS app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.18.2",
+    "multer": "^2.0.2"
+  }
+}

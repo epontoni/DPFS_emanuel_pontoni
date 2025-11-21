@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MakerHub | Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body class="auth-body">
+    <header class="site-header">
+      <div class="logo">
+        <div class="logo-mark">MH</div>
+        <span class="logo-text">MAKERHUB</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="product-detail.html">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="login-form.html" class="icon-link active">Account</a>
+        <a href="shopping-cart.html" class="icon-link">Cart</a>
+      </div>
+    </header>
+
+    <main class="auth-container">
+      <form class="card auth-form">
+        <h1>Login</h1>
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com" />
+
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="••••••••" />
+
+        <label class="checkbox">
+          <input type="checkbox" />
+          <span>Remember me</span>
+        </label>
+
+        <button class="primary full" type="submit">Login</button>
+
+        <div class="auth-footer">
+          <span>Don’t have an account?</span>
+          <a href="register-form.html" class="link">Register</a>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

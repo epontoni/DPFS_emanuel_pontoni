@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MakerHub | Shopping Cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo">
+        <div class="logo-mark">MH</div>
+        <span class="logo-text">MAKERHUB</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="product-detail.html">Shop</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="login-form.html" class="icon-link">Account</a>
+        <a href="shopping-cart.html" class="icon-link active">Cart</a>
+      </div>
+    </header>
+
+    <main class="page cart-page">
+      <h1>Shopping Cart</h1>
+      <section class="cart-grid">
+        <div class="cart-table">
+          <div class="cart-row cart-head">
+            <span>Item</span>
+            <span>Product</span>
+            <span>Price</span>
+            <span>Quantity</span>
+            <span>Total</span>
+            <span class="sr-only">Remove</span>
+          </div>
+          <div class="cart-row">
+            <div class="thumb"></div>
+            <div class="product-name">Empty text.</div>
+            <div class="price">$0.00</div>
+            <div class="qty">1</div>
+            <div class="total">$0.00</div>
+            <button class="link">Remove</button>
+          </div>
+          <div class="cart-actions">
+            <a href="index.html" class="link">← Continue Shopping</a>
+          </div>
+        </div>
+
+        <aside class="cart-summary">
+          <h2>Cart Total</h2>
+          <div class="summary-line">
+            <span>Subtotal:</span>
+            <span>$0.00</span>
+          </div>
+          <button class="primary full">Checkout</button>
+        </aside>
+      </section>
+
+      <section class="update-cart">
+        <h2>Update Cart</h2>
+        <button class="secondary">Apply Coupon</button>
+        <button class="primary">Update Cart</button>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Social Media</a>
+    </footer>
+  </body>
+</html>

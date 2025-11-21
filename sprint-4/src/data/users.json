@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "email": "admin@makerhub.com",
+    "name": "Admin User",
+    "password": "hashed_password_here",
+    "role": "admin"
+  },
+  {
+    "id": 2,
+    "email": "user@makerhub.com",
+    "name": "Regular User",
+    "password": "hashed_password_here",
+    "role": "user"
+  }
+]

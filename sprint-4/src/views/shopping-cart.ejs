@@ -1,0 +1,45 @@
+<%- include('partials/header', { title: 'Shopping Cart' }) %>
+
+<main class="page cart-page">
+  <h1>Shopping Cart</h1>
+  <section class="cart-grid">
+    <div class="cart-table">
+      <div class="cart-row cart-head">
+        <span>Item</span>
+        <span>Product</span>
+        <span>Price</span>
+        <span>Quantity</span>
+        <span>Total</span>
+        <span class="sr-only">Remove</span>
+      </div>
+      <div class="cart-row">
+        <div class="thumb"></div>
+        <div class="product-name">Empty text.</div>
+        <div class="price">$0.00</div>
+        <div class="qty">1</div>
+        <div class="total">$0.00</div>
+        <button class="link">Remove</button>
+      </div>
+      <div class="cart-actions">
+        <a href="/" class="link">← Continue Shopping</a>
+      </div>
+    </div>
+
+    <aside class="cart-summary">
+      <h2>Cart Total</h2>
+      <div class="summary-line">
+        <span>Subtotal:</span>
+        <span>$0.00</span>
+      </div>
+      <button class="primary full">Checkout</button>
+    </aside>
+  </section>
+
+  <section class="update-cart">
+    <h2>Update Cart</h2>
+    <button class="secondary">Apply Coupon</button>
+    <button class="primary">Update Cart</button>
+  </section>
+</main>
+
+<%- include('partials/footer') %>

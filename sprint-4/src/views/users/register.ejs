@@ -1,0 +1,44 @@
+<%- include('../partials/header', { title: 'Register' }) %>
+
+<main class="auth-container">
+  <form class="card auth-form">
+    <h1>Register</h1>
+    <label for="name">Name</label>
+    <input id="name" type="text" placeholder="Your name" />
+
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="you@example.com" />
+
+    <label for="password">Password</label>
+    <input id="password" type="password" placeholder="••••••••" />
+
+    <label for="confirm">Confirm Password</label>
+    <input id="confirm" type="password" placeholder="••••••••" />
+
+    <button class="primary full" type="submit">Register</button>
+  </form>
+</main>
+
+<%- include('../partials/footer') %> <%- include('../partials/header', { title:
+'Register' }) %>
+<main class="container main-content">
+  <div class="form-card">
+    <h1>Create an Account</h1>
+    <form>
+      <div class="form-row input-icon">
+        <label class="form-label">Full Name</label>
+        <span class="icon material-icons">person</span>
+        <input class="input" name="name" />
+      </div>
+      <div class="form-row input-icon">
+        <label class="form-label">Email</label>
+        <span class="icon material-icons">mail</span>
+        <input class="input" name="email" />
+      </div>
+      <div style="margin-top: 1rem">
+        <button class="btn btn-primary">Create Account</button>
+      </div>
+    </form>
+  </div>
+</main>
+<%- include('../partials/footer') %>

@@ -1,0 +1,116 @@
+<%- include('partials/head', { title: __('checkout_title') }) %>
+<%- include('partials/header') %>
+
+<main class="page checkout-page" style="padding: 2rem 1rem; max-width: 1000px; margin: 0 auto;">
+  <h1 style="margin-bottom: 2rem;"><%= __('checkout_title') %></h1>
+
+  <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; align-items: start;">
+    
+    {/* Form Section */}
+    <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 2rem;">
+      <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem;"><%= __('checkout_shipping') %></h2>
+      
+      <form action="/checkout" method="POST" class="auth-form" style="display: flex; flex-direction: column; gap: 1.25rem;" novalidate id="checkout-form">
+        
+        <div class="form-row" style="display: flex; flex-direction: column; gap: 4px;">
+          <label class="form-label" style="font-weight: 500;"><%= __('checkout_address') %></label>
+          <input name="address" class="input" placeholder="Av. Cabildo 1234, Piso 2" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); background: transparent; color: inherit;" required />
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-row" style="display: flex; flex-direction: column; gap: 4px;">
+            <label class="form-label" style="font-weight: 500;">Ciudad</label>
+            <input name="city" class="input" placeholder="Buenos Aires" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); background: transparent; color: inherit;" required />
+          </div>
+          
+          <div class="form-row" style="display: flex; flex-direction: column; gap: 4px;">
+            <label class="form-label" style="font-weight: 500;">Código Postal</label>
+            <input name="zip" class="input" placeholder="C1426" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); background: transparent; color: inherit;" required />
+          </div>
+        </div>
+
+        <h2 style="font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 1rem;"><%= __('checkout_payment') %></h2>
+        
+        <div class="form-row" style="display: flex; flex-direction: column; gap: 10px;">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="radio" name="paymentMethod" value="credit_card" checked style="width: 18px; height: 18px;" /> Tarjeta de Crédito / Débito
+          </label>
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="radio" name="paymentMethod" value="paypal" style="width: 18px; height: 18px;" /> PayPal
+          </label>
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="radio" name="paymentMethod" value="bank_transfer" style="width: 18px; height: 18px;" /> Transferencia Bancaria
+          </label>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-weight: bold; border-radius: 8px;"><%= __('checkout_btn_pay') %></button>
+        </div>
+      </form>
+    </div>
+
+    {/* Order Summary Sidebar */}
+    <aside style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem;">
+      <h2 style="font-size: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">Resumen de Compra</h2>
+      
+      <div style="display: flex; flex-direction: column; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 12px;">
+        <% cart.forEach(function(item) { %>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
+            <div>
+              <span style="font-weight: 500;"><%= item.title %></span>
+              <span style="color: #9ca3af; margin-left: 6px;">x<%= item.quantity %></span>
+            </div>
+            <span style="font-weight: bold; color: #0A84FF;">$<%= (item.price * item.quantity).toFixed(2) %></span>
+          </div>
+        <% }) %>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold;">
+        <span>Total:</span>
+        <span style="color: #0A84FF;">$<%= total.toFixed(2) %></span>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<script>
+  // Quick front-end validation
+  document.getElementById('checkout-form').addEventListener('submit', function(e) {
+    const address = this.querySelector('input[name="address"]').value.trim();
+    const city = this.querySelector('input[name="city"]').value.trim();
+    const zip = this.querySelector('input[name="zip"]').value.trim();
+    
+    // Clear previous errors
+    document.querySelectorAll('.fe-error').forEach(el => el.remove());
+    
+    const showError = (input, msg) => {
+      const errDiv = document.createElement('div');
+      errDiv.className = 'fe-error';
+      errDiv.style.color = '#FF3B30';
+      errDiv.style.fontSize = '0.85rem';
+      errDiv.style.marginTop = '4px';
+      errDiv.innerText = msg;
+      input.parentNode.appendChild(errDiv);
+    };
+
+    let hasErrors = false;
+    if (!address) {
+      showError(this.querySelector('input[name="address"]'), 'La dirección de envío es obligatoria');
+      hasErrors = true;
+    }
+    if (!city) {
+      showError(this.querySelector('input[name="city"]'), 'La ciudad es obligatoria');
+      hasErrors = true;
+    }
+    if (!zip) {
+      showError(this.querySelector('input[name="zip"]'), 'El código postal es obligatorio');
+      hasErrors = true;
+    }
+    
+    if (hasErrors) {
+      e.preventDefault();
+    }
+  });
+</script>
+
+<%- include('partials/footer') %>

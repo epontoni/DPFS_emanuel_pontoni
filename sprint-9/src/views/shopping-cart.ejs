@@ -1,0 +1,93 @@
+<%- include('partials/head', { title: __('cart_title') }) %>
+<%- include('partials/header') %>
+
+<main class="page cart-page" style="padding: 2rem 1rem; max-width: 1100px; margin: 0 auto;">
+  <h1 style="margin-bottom: 2rem;"><%= __('cart_title') %></h1>
+  
+  <% if (cart && cart.length > 0) { %>
+    <section class="cart-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start;">
+      
+      {/* Table List */}
+      <div class="cart-table" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 1.5rem;">
+        
+        <% cart.forEach(function(item) { %>
+          <div class="cart-item-row" style="display: grid; grid-template-columns: 80px 1.5fr 1fr 1fr 1fr auto; gap: 12px; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 12px 0;">
+            
+            {/* Image */}
+            <div class="thumb" style="width: 64px; height: 64px; border-radius: 8px; overflow: hidden; background: #1f2937;">
+              <img src="<%= item.image || '/public/images/placeholder.png' %>" alt="<%= item.title %>" style="width: 100%; height: 100%; object-fit: cover;" />
+            </div>
+            
+            {/* Title */}
+            <div class="product-name" style="font-weight: 500;"><%= item.title %></div>
+            
+            {/* Price */}
+            <div class="price" style="color: #9ca3af;">$<%= item.price %></div>
+            
+            {/* Qty update form */}
+            <div class="qty">
+              <form action="/cart/update/<%= item.id %>" method="POST" style="display: inline;">
+                <input 
+                  type="number" 
+                  name="quantity" 
+                  value="<%= item.quantity %>" 
+                  min="1" 
+                  style="width: 60px; padding: 6px; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; background: transparent; color: inherit; text-align: center;" 
+                  onchange="this.form.submit()" 
+                />
+              </form>
+            </div>
+            
+            {/* Subtotal */}
+            <div class="total" style="font-weight: bold; color: #0A84FF;">$<%= (item.price * item.quantity).toFixed(2) %></div>
+            
+            {/* Delete form */}
+            <div>
+              <form action="/cart/remove/<%= item.id %>" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-ghost" style="color: #FF3B30; border: none; background: transparent; cursor: pointer; font-size: 0.85rem;" title="Eliminar">
+                  <span class="material-icons">delete_outline</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        <% }) %>
+        
+        <div class="cart-actions" style="margin-top: 1.5rem;">
+          <a href="/" class="link" style="text-decoration: none; color: #0A84FF; font-weight: 500;">← <%= __('cart_btn_continue') %></a>
+        </div>
+      </div>
+      
+      {/* Checkout Sidebar */}
+      <aside class="cart-summary" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem;">
+        <h2 style="font-size: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;"><%= __('cart_title') %></h2>
+        
+        <div class="summary-line" style="display: flex; justify-content: space-between; font-size: 0.95rem;">
+          <span style="color: #9ca3af;"><%= __('cart_subtotal') %>:</span>
+          <span style="font-weight: 500;">$<%= subtotal.toFixed(2) %></span>
+        </div>
+        
+        <div class="summary-line" style="display: flex; justify-content: space-between; font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+          <span style="color: #9ca3af;"><%= __('cart_shipping') %>:</span>
+          <span style="color: #30D158; font-weight: 500;"><%= __('cart_free') %></span>
+        </div>
+        
+        <div class="summary-line" style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold;">
+          <span><%= __('cart_total') %>:</span>
+          <span style="color: #0A84FF;">$<%= subtotal.toFixed(2) %></span>
+        </div>
+        
+        <div style="margin-top: 1rem;">
+          <a href="/checkout" class="btn btn-primary" style="display: block; text-align: center; text-decoration: none; padding: 12px; font-weight: bold; border-radius: 8px;"><%= __('cart_btn_checkout') %></a>
+        </div>
+      </aside>
+    </section>
+  <% } else { %>
+    <div style="text-align: center; padding: 4rem 1rem; border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px;">
+      <span class="material-icons" style="font-size: 4rem; color: #4b5563; margin-bottom: 1rem;">shopping_bag</span>
+      <p style="color: #9ca3af; font-size: 1.1rem; margin-bottom: 1.5rem;"><%= __('cart_empty') %></p>
+      <a href="/" class="btn btn-primary" style="padding: 10px 24px; text-decoration: none; border-radius: 6px;"><%= __('cart_btn_continue') %></a>
+    </div>
+  <% } %>
+</main>
+
+<%- include('partials/footer') %>

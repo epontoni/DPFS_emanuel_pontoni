@@ -1,0 +1,89 @@
+/* Media queries for full responsive design on mobile and tablet devices */
+
+@media (max-width: 768px) {
+  /* Header */
+  .site-header {
+    padding: 10px 0;
+  }
+  .header-inner {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: center !important;
+  }
+  .main-nav {
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .header-actions {
+    width: 100% !important;
+    justify-content: center !important;
+    margin-top: 4px;
+  }
+
+  /* Home & Product Grid */
+  .shop-page {
+    flex-direction: column !important;
+    padding: 1rem !important;
+  }
+  .filters {
+    width: 100% !important;
+    margin-bottom: 2rem !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding-bottom: 1.5rem !important;
+  }
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)) !important;
+    gap: 12px !important;
+  }
+  .hero {
+    padding: 1.5rem !important;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 1.8rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Product Details */
+  .product-detail {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    padding: 1rem !important;
+  }
+  .product-visual {
+    height: 280px !important;
+  }
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  /* Shopping Cart & Checkout Grid */
+  .cart-grid, 
+  .checkout-page > div {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  .cart-item-row {
+    grid-template-columns: 60px 1fr auto !important;
+    gap: 8px !important;
+  }
+  /* Hide price and totals from secondary columns to fit mobile screen */
+  .cart-item-row .price {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .related-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .page-title {
+    font-size: 1.75rem !important;
+  }
+}

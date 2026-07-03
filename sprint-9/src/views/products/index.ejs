@@ -1,0 +1,60 @@
+<%- include('../partials/head', { title: 'Products' }) %>
+<%- include('../partials/header') %>
+
+<main class="container main-content">
+  <h1 class="page-title"><%= __('title_products') %></h1>
+
+  <div style="margin: 1rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+    <% if (locals.user && user.role === 'admin') { %>
+      <a href="/products/create" class="btn btn-primary"><%= __('btn_create_product') %></a>
+    <% } else { %>
+      <div></div>
+    <% } %>
+    <form action="/products" method="GET" style="display: flex; gap: 8px;">
+      <input type="text" name="search" placeholder="<%= __('placeholder_search') %>" value="<%= search %>" style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; background: transparent; color: inherit;" />
+      <button type="submit" class="btn btn-ghost" style="border: 1px solid var(--primary); padding: 8px 16px;"><%= __('btn_search') %></button>
+    </form>
+  </div>
+
+  <div class="grid-cards">
+    <% products.forEach(function(p){ %>
+    <div class="product-card">
+      <img
+        class="product-thumb"
+        src="<%= p.image || 'https://via.placeholder.com/480x280?text=' + encodeURIComponent(p.title) %>"
+        alt="<%= p.title %>"
+      />
+      <div class="card-body">
+        <h3><a href="/products/<%= p.id %>"><%= p.title %></a></h3>
+        <p class="muted"><%= p.description %></p>
+        <p style="font-size: 12px; color: #6b7280">
+          <strong><%= p.category %></strong>
+        </p>
+        <div
+          style="
+            margin-top: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <strong class="price">$<%= p.price %></strong>
+          <div>
+            <a class="link" href="/products/<%= p.id %>"><%= __('btn_view') %></a>
+            <% if (locals.user && user.role === 'admin') { %>
+              <a
+                class="link"
+                href="/products/<%= p.id %>/edit"
+                style="margin-left: 12px"
+                ><%= __('btn_edit') %></a
+              >
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

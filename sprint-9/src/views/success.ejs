@@ -1,0 +1,16 @@
+<%- include('partials/head', { title: __('success_title') }) %>
+<%- include('partials/header') %>
+
+<main class="page success-page" style="padding: 4rem 1rem; text-align: center; max-width: 600px; margin: 0 auto;">
+  <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 3rem 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+    <span class="material-icons" style="font-size: 5rem; color: #30D158; margin-bottom: 1.5rem;">check_circle_outline</span>
+    <h1 style="font-size: 1.8rem; margin-bottom: 1rem; color: #fff;"><%= __('success_title') %></h1>
+    <p style="color: #9ca3af; font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;"><%= __('success_msg') %></p>
+    
+    <div>
+      <a href="/products" class="btn btn-primary" style="padding: 12px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;"><%= __('cart_btn_continue') %></a>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

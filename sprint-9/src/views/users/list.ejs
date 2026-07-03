@@ -1,0 +1,65 @@
+<%- include('../partials/head', { title: 'Manage Users' }) %>
+<%- include('../partials/header') %>
+
+<main class="page">
+  <div class="container" style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
+    <h1 style="margin-bottom: 1.5rem;">Gestión de Usuarios</h1>
+    
+    <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 1.5rem; overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+        <thead>
+          <tr style="border-bottom: 2px solid rgba(255, 255, 255, 0.1);">
+            <th style="padding: 12px 8px;">ID</th>
+            <th style="padding: 12px 8px;">Avatar</th>
+            <th style="padding: 12px 8px;">Nombre</th>
+            <th style="padding: 12px 8px;">Email</th>
+            <th style="padding: 12px 8px;">Rol</th>
+            <th style="padding: 12px 8px; text-align: center;">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(function(u) { %>
+            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.02)'" onmouseout="this.style.background='transparent'">
+              <td style="padding: 12px 8px; color: #0A84FF; font-weight: bold;">#<%= u.id %></td>
+              <td style="padding: 12px 8px;">
+                <img 
+                  src="<%= u.image || '/public/images/users/placeholder.png' %>" 
+                  alt="<%= u.firstName %>" 
+                  style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(255, 255, 255, 0.1);" 
+                />
+              </td>
+              <td style="padding: 12px 8px; font-weight: 500;"><%= u.firstName %> <%= u.lastName %></td>
+              <td style="padding: 12px 8px; color: #9ca3af;"><%= u.email %></td>
+              <td style="padding: 12px 8px;">
+                <span style="
+                  display: inline-block; 
+                  padding: 2px 8px; 
+                  border-radius: 4px; 
+                  font-size: 0.75rem; 
+                  font-weight: 600;
+                  background: <%= u.category === 'admin' ? 'rgba(175, 82, 222, 0.15)' : 'rgba(52, 199, 89, 0.15)' %>;
+                  color: <%= u.category === 'admin' ? '#BF5AF2' : '#30D158' %>;
+                ">
+                  <%= u.category || 'user' %>
+                </span>
+              </td>
+              <td style="padding: 12px 8px; text-align: center;">
+                <% if (locals.user && locals.user.id !== u.id) { %>
+                  <form action="/users/<%= u.id %>/delete" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar permanentemente a este usuario? Esta acción es irreversible.');" style="display: inline;">
+                    <button type="submit" class="btn btn-ghost" style="color: #FF3B30; border: 1px solid rgba(255,59,48,0.3); padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; background: transparent;">
+                      Eliminar
+                    </button>
+                  </form>
+                <% } else { %>
+                  <span style="color: #6b7280; font-size: 0.8rem; font-style: italic;">Tú (Actual)</span>
+                <% } %>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/footer') %>

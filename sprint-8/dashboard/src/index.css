@@ -1,0 +1,16 @@
+/* Reset and base styles for MakerHub Dashboard */
+:root {
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #080c14;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}

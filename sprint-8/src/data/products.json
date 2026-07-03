@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Bicicleta Urbana MTB",
+    "price": 45000,
+    "description": "Bicicleta de montaña robusta, ideal para caminos difíciles y terrenos irregulares. Suspensión delantera de 100mm, frenos de disco hidráulicos.",
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500",
+    "category": "Bicicletas",
+    "colors": "Negro, Rojo, Azul"
+  },
+  {
+    "id": 2,
+    "title": "Casco Deportivo Pro",
+    "price": 8500,
+    "description": "Casco ligero con protección avanzada. Diseño aerodinámico, ventilación óptima y certificación de seguridad internacional.",
+    "image": "https://images.unsplash.com/photo-1629366303168-0f83891b1377?w=500",
+    "category": "Accesorios",
+    "colors": "Blanco, Gris, Naranja"
+  },
+  {
+    "id": 3,
+    "title": "Luces LED Recargables",
+    "price": 3200,
+    "description": "Juego de luces frontal y trasera LED. Batería recargable por USB, 8 modos de iluminación, muy visible de noche.",
+    "image": "https://images.unsplash.com/photo-1505798577917-4a376de3e674?w=500",
+    "category": "Accesorios",
+    "colors": "Rojo, Negro"
+  },
+  {
+    "id": 4,
+    "title": "Candado U de Seguridad",
+    "price": 5800,
+    "description": "Candado en forma de U fabricado en acero templado. Resistente al corte, cierre rápido con llave. Ideal para ciudad.",
+    "image": "https://images.unsplash.com/photo-1549465220-acada08988b7?w=500",
+    "category": "Accesorios",
+    "colors": "Negro, Plateado"
+  },
+  {
+    "id": 5,
+    "title": "Pump Manual de Aire",
+    "price": 2200,
+    "description": "Bomba portátil para inflar llantas. Compatible con valvulas Presta y Schrader. Compacta y fácil de llevar en mochila.",
+    "image": "https://images.unsplash.com/photo-1552748814-4851621f0eaa?w=500",
+    "category": "Herramientas",
+    "colors": "Azul, Negro, Verde"
+  },
+  {
+    "id": 6,
+    "title": "Sillín Gel Comfort",
+    "price": 4500,
+    "description": "Sillín ergonómico con gel de memoria. Acolchonado premium para viajes largos sin molestias. Fácil instalación.",
+    "image": "https://images.unsplash.com/photo-1575092918484-dbb8b36cebee?w=500",
+    "category": "Componentes",
+    "colors": "Negro, Marrón"
+  },
+  {
+    "id": 7,
+    "title": "Pedales Antideslizantes",
+    "price": 6200,
+    "description": "Pedales de aluminio con plataforma antideslizante. Reflectores integrados, muy seguros para uso nocturno.",
+    "image": "https://images.unsplash.com/photo-1570803387584-86496797e8c9?w=500",
+    "category": "Componentes",
+    "colors": "Gris, Negro"
+  },
+  {
+    "id": 8,
+    "title": "Espejo Retrovisor Giratorio",
+    "price": 1900,
+    "description": "Espejo de seguridad ajustable para manillar. Permite ver el tráfico trasero sin girar la cabeza. Muy ligero.",
+    "image": "https://images.unsplash.com/photo-1555626906-fcf10d6851a7?w=500",
+    "category": "Accesorios",
+    "colors": "Negro, Plata"
+  }
+]

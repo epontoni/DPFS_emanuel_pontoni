@@ -1,0 +1,62 @@
+<%- include('../partials/head', { title: 'Register' }) %>
+<%- include('../partials/header') %>
+
+<main class="page">
+  <div class="container" style="max-width: 500px; margin: 2rem auto;">
+    <h1>Registro</h1>
+    
+    <form action="/register" method="POST" enctype="multipart/form-data" class="auth-form" style="margin-top: 1.5rem;" novalidate>
+      <div class="form-row" style="margin-bottom: 1rem;">
+        <label class="form-label">Nombre</label>
+        <input name="firstName" class="input" value="<%= locals.oldData && oldData.firstName ? oldData.firstName : '' %>" style="width: 100%; padding: 8px;" />
+        <% if (locals.errors && errors.firstName) { %>
+          <div style="color: #FF3B30; font-size: 0.85rem; margin-top: 4px;"><%= errors.firstName.msg %></div>
+        <% } %>
+      </div>
+
+      <div class="form-row" style="margin-bottom: 1rem;">
+        <label class="form-label">Apellido</label>
+        <input name="lastName" class="input" value="<%= locals.oldData && oldData.lastName ? oldData.lastName : '' %>" style="width: 100%; padding: 8px;" />
+        <% if (locals.errors && errors.lastName) { %>
+          <div style="color: #FF3B30; font-size: 0.85rem; margin-top: 4px;"><%= errors.lastName.msg %></div>
+        <% } %>
+      </div>
+
+      <div class="form-row" style="margin-bottom: 1rem;">
+        <label class="form-label">Email</label>
+        <input name="email" type="email" class="input" value="<%= locals.oldData && oldData.email ? oldData.email : '' %>" style="width: 100%; padding: 8px;" />
+        <% if (locals.errors && errors.email) { %>
+          <div style="color: #FF3B30; font-size: 0.85rem; margin-top: 4px;"><%= errors.email.msg %></div>
+        <% } %>
+      </div>
+
+      <div class="form-row" style="margin-bottom: 1rem;">
+        <label class="form-label">Contraseña</label>
+        <input name="password" type="password" class="input" style="width: 100%; padding: 8px;" />
+        <% if (locals.errors && errors.password) { %>
+          <div style="color: #FF3B30; font-size: 0.85rem; margin-top: 4px;"><%= errors.password.msg %></div>
+        <% } %>
+      </div>
+
+      <div class="form-row" style="margin-bottom: 1rem;">
+        <label class="form-label">Categoría</label>
+        <input name="category" class="input" value="<%= locals.oldData && oldData.category ? oldData.category : '' %>" placeholder="Ej: admin, user" style="width: 100%; padding: 8px;" />
+      </div>
+
+      <div class="form-row" style="margin-bottom: 1.5rem;">
+        <label class="form-label">Imagen de Perfil (opcional)</label>
+        <input name="image" type="file" accept="image/*" style="width: 100%;" />
+        <% if (locals.errors && errors.image) { %>
+          <div style="color: #FF3B30; font-size: 0.85rem; margin-top: 4px;"><%= errors.image.msg %></div>
+        <% } %>
+      </div>
+
+      <div style="margin-top: 1rem">
+        <button class="btn btn-primary" type="submit" style="width: 100%; padding: 10px;">Registrarme</button>
+      </div>
+    </form>
+  </div>
+</main>
+
+<script src="/public/js/registerValidation.js"></script>
+<%- include('../partials/footer') %>
